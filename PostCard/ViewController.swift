@@ -30,6 +30,7 @@ class ViewController: UIViewController {
     }
     
     
+    //Simple Comment
     @IBAction func sendMailButtonPressed(sender: UIButton) {
         if( (enterMessageTextField.text != nil) &&
             !(enterMessageTextField.text.isEmpty)){
