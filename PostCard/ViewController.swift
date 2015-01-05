@@ -10,14 +10,13 @@ import UIKit
 
 class ViewController: UIViewController {
     @IBOutlet weak var messageLabel: UILabel!
-
+    @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var enterNameTextField: UITextField!
-    
     @IBOutlet weak var enterMessageTextField: UITextField!
-    
     @IBOutlet weak var sendMessageButton: UIButton!
-    
     @IBOutlet weak var resetButton: UIButton!
+    
+   
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,15 +37,28 @@ class ViewController: UIViewController {
             messageLabel.hidden = false
             messageLabel.textColor = UIColor.redColor()
             enterMessageTextField.text = ""
-            sendMessageButton.setTitle("Mail Sent", forState: UIControlState.Normal)
-    
+            enterMessageTextField.resignFirstResponder()
         }
-         enterMessageTextField.resignFirstResponder()
+        
+        if( (enterNameTextField.text != nil) &&
+            !(enterNameTextField.text.isEmpty)){
+                nameLabel.text="To: " + enterNameTextField.text
+                nameLabel.hidden = false
+                nameLabel.textColor = UIColor.greenColor()
+                enterNameTextField.text = ""
+                enterNameTextField.resignFirstResponder()
+                
+        }
+        sendMessageButton.setTitle("Mail Sent", forState: UIControlState.Normal)
+
+        
     }
     
     @IBAction func resetButtonPressed(sender: UIButton) {
         messageLabel.hidden = true
         messageLabel.text = ""
+        nameLabel.hidden = true
+        nameLabel.text = ""
         enterMessageTextField.text = ""
         enterNameTextField.text = ""
         self.view.endEditing(true)
