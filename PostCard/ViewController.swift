@@ -61,6 +61,7 @@ class ViewController: UIViewController {
         nameLabel.text = ""
         enterMessageTextField.text = ""
         enterNameTextField.text = ""
+         sendMessageButton.setTitle("Send Message", forState: UIControlState.Normal) 
         self.view.endEditing(true)
     }
 
